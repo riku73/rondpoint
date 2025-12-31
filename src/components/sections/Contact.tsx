@@ -294,26 +294,24 @@ export default function Contact() {
               </ul>
             </motion.div>
 
-            {/* Map placeholder */}
+            {/* Google Maps */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.7 }}
-              className="card-industrial rounded-xl overflow-hidden h-48 relative group"
+              className="card-industrial rounded-xl overflow-hidden h-52"
             >
-              <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop"
-                alt="Map"
-                fill
-                className="object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20581.2539096179!2d6.0872303!3d49.848907000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479555e754dc4e15%3A0x997b09ee0b37c665!2sGarage%20um%20Rond%20Point%20S%C3%A0rl!5e0!3m2!1sen!2slu!4v1767198209172!5m2!1sen!2slu"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale hover:grayscale-0 transition-all duration-500"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                <div className="text-center">
-                  <MapPin className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <p className="text-sm text-zinc-300">Voir sur Google Maps</p>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         </div>

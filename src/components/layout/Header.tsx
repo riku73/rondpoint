@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Phone, Car } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navigation = [
   { name: "Accueil", href: "#accueil" },
@@ -20,115 +20,207 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-black/80 backdrop-blur-xl border-b border-zinc-800/50 py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="container-custom">
-        <nav className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Car className="w-5 h-5 text-primary-foreground" />
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          isScrolled
+            ? "glass-chrome py-3"
+            : "bg-transparent py-5"
+        }`}
+      >
+        <div className="container-custom">
+          <nav className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary/20">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="w-6 h-6 text-primary-foreground"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute -inset-2 bg-primary/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-              <div className="absolute -inset-1 bg-primary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-bold text-lg tracking-wide">
-                GARAGE UM ROND POINT
-              </span>
-            </div>
-          </Link>
+              <div className="hidden sm:block">
+                <span className="font-semibold text-lg tracking-wide">
+                  GARAGE UM ROND POINT
+                </span>
+              </div>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-zinc-400 hover:text-white transition-colors relative group tracking-wide uppercase"
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-10">
+              {navigation.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="relative text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-300 tracking-wide uppercase group py-2"
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-primary/50 transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden md:flex items-center gap-5">
+              <a
+                href="tel:+352810541"
+                className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-300 group"
               >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-6">
-            <a
-              href="tel:+352810541"
-              className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors group"
-            >
-              <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-              <span className="hidden lg:inline">+352 81 05 41</span>
-            </a>
-            <Button className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-6">
-              Prendre Rendez-vous
-            </Button>
-          </div>
-
-          {/* Mobile Menu */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className="text-white">
-                <Menu className="w-6 h-6" />
-                <span className="sr-only">Ouvrir le menu</span>
+                <div className="w-9 h-9 rounded-lg bg-zinc-800/50 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                  <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                </div>
+                <span className="hidden lg:inline tracking-wide">+352 81 05 41</span>
+              </a>
+              <Button className="btn-magnetic bg-primary hover:bg-primary/90 text-primary-foreground px-6 h-11 rounded-xl font-medium">
+                Prendre Rendez-vous
               </Button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[320px] bg-zinc-950 border-zinc-800"
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              onClick={() => setIsOpen(true)}
+              className="lg:hidden w-11 h-11 rounded-xl bg-zinc-800/50 flex items-center justify-center hover:bg-zinc-700/50 transition-colors"
             >
-              <div className="flex flex-col gap-8 mt-8">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                    <Car className="w-5 h-5 text-primary-foreground" />
+              <Menu className="w-5 h-5" />
+              <span className="sr-only">Ouvrir le menu</span>
+            </button>
+          </nav>
+        </div>
+      </motion.header>
+
+      {/* Mobile Menu - Full Screen Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm lg:hidden"
+            />
+
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm z-50 bg-[#0c0c0e] border-l border-zinc-800/50 lg:hidden"
+            >
+              <div className="flex flex-col h-full p-6">
+                {/* Header */}
+                <div className="flex items-center justify-between mb-10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="w-5 h-5 text-primary-foreground"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                        />
+                      </svg>
+                    </div>
+                    <span className="font-semibold text-lg">GARAGE UM ROND POINT</span>
                   </div>
-                  <span className="font-bold text-lg">GARAGE UM ROND POINT</span>
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="w-10 h-10 rounded-xl bg-zinc-800/50 flex items-center justify-center hover:bg-zinc-700/50 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
                 </div>
 
-                <nav className="flex flex-col gap-1">
-                  {navigation.map((item) => (
-                    <Link
+                {/* Navigation */}
+                <nav className="flex flex-col gap-1 flex-1">
+                  {navigation.map((item, index) => (
+                    <motion.div
                       key={item.name}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className="text-lg font-medium text-zinc-400 hover:text-white hover:bg-zinc-900 transition-colors py-3 px-4 rounded-lg"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
                     >
-                      {item.name}
-                    </Link>
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center text-xl font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-all py-4 px-4 rounded-xl group"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-4 group-hover:bg-primary transition-colors" />
+                        {item.name}
+                      </Link>
+                    </motion.div>
                   ))}
                 </nav>
 
-                <div className="flex flex-col gap-4 mt-4 pt-4 border-t border-zinc-800">
+                {/* Footer */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="pt-6 border-t border-zinc-800/50 space-y-4"
+                >
                   <a
                     href="tel:+352810541"
-                    className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors py-2"
+                    className="flex items-center gap-4 text-zinc-300 hover:text-white transition-colors py-3"
                   >
-                    <Phone className="w-5 h-5 text-primary" />
-                    <span>+352 81 05 41</span>
+                    <div className="w-12 h-12 rounded-xl bg-zinc-800/50 flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-zinc-500 uppercase tracking-wider">Appelez-nous</p>
+                      <p className="font-medium">+352 81 05 41</p>
+                    </div>
                   </a>
-                  <Button className="w-full btn-glow bg-primary hover:bg-primary/90 text-primary-foreground h-12">
+                  <Button className="w-full btn-magnetic bg-primary hover:bg-primary/90 text-primary-foreground h-14 rounded-xl font-medium text-base">
                     Prendre Rendez-vous
                   </Button>
-                </div>
+                </motion.div>
               </div>
-            </SheetContent>
-          </Sheet>
-        </nav>
-      </div>
-    </header>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
