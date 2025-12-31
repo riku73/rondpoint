@@ -81,9 +81,7 @@ export default function Contact() {
             </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            CONTACTEZ
-            <br />
-            <span className="text-zinc-500">NOUS</span>
+            Contactez-nous
           </h2>
           <p className="text-lg text-zinc-400 max-w-xl">
             Une question ? Besoin d&apos;un devis ? Notre équipe est à votre
@@ -101,7 +99,7 @@ export default function Contact() {
             className="lg:col-span-3"
           >
             <div className="card-industrial rounded-2xl p-8 md:p-10">
-              <h3 className="text-2xl font-bold mb-8">ENVOYEZ-NOUS UN MESSAGE</h3>
+              <h3 className="text-2xl font-bold mb-8">Envoyez-nous un message</h3>
 
               {isSubmitted ? (
                 <motion.div
@@ -124,7 +122,7 @@ export default function Contact() {
                       />
                     </svg>
                   </div>
-                  <h4 className="text-2xl font-bold mb-3">MESSAGE ENVOYÉ !</h4>
+                  <h4 className="text-2xl font-bold mb-3">Message envoyé !</h4>
                   <p className="text-zinc-400">
                     Nous vous répondrons dans les plus brefs délais.
                   </p>
@@ -271,7 +269,7 @@ export default function Contact() {
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
                   <Clock className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-bold">HORAIRES D&apos;OUVERTURE</h3>
+                <h3 className="text-lg font-bold">Horaires d&apos;ouverture</h3>
               </div>
               <ul className="space-y-4">
                 {hours.map((item) => (

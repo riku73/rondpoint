@@ -6,34 +6,34 @@ import Image from "next/image";
 import { Award, BadgeCheck, Clock, Sparkles, Shield, Users } from "lucide-react";
 
 const stats = [
-  { value: 10, suffix: "+", label: "Années d'Expérience" },
-  { value: 500, suffix: "+", label: "Clients Satisfaits" },
-  { value: 2000, suffix: "+", label: "Véhicules Réparés" },
-  { value: 100, suffix: "%", label: "Garantie Satisfaction" },
+  { value: 10, suffix: "+", label: "Années d'expérience" },
+  { value: 500, suffix: "+", label: "Clients satisfaits" },
+  { value: 2000, suffix: "+", label: "Véhicules réparés" },
+  { value: 100, suffix: "%", label: "Garantie satisfaction" },
 ];
 
 const features = [
   {
     icon: Award,
-    title: "EXPERTISE CERTIFIÉE",
+    title: "Expertise certifiée",
     description:
       "Nos techniciens sont formés et certifiés pour toutes marques de véhicules.",
   },
   {
     icon: BadgeCheck,
-    title: "PRIX TRANSPARENTS",
+    title: "Prix transparents",
     description:
       "Devis gratuit et détaillé avant chaque intervention. Pas de surprises.",
   },
   {
     icon: Clock,
-    title: "SERVICE RAPIDE",
+    title: "Service rapide",
     description:
       "Rendez-vous disponibles sous 48h. Nous respectons vos délais.",
   },
   {
     icon: Sparkles,
-    title: "PIÈCES DE QUALITÉ",
+    title: "Pièces de qualité",
     description:
       "Nous utilisons uniquement des pièces d'origine ou de qualité équivalente.",
   },
@@ -118,9 +118,9 @@ export default function WhyChooseUs() {
             <div className="h-px w-12 bg-primary" />
           </div>
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            POURQUOI NOUS
+            Pourquoi nous
             <br />
-            <span className="text-gradient-copper">CHOISIR ?</span>
+            <span className="text-gradient-copper">choisir ?</span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
             Plus de 10 ans d&apos;expérience au service de votre satisfaction.

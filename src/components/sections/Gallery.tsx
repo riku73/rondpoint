@@ -95,9 +95,9 @@ export default function Gallery() {
         >
           <span className="section-label mb-6">Galerie</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight">
-            NOTRE TRAVAIL
+            Notre travail
             <br />
-            <span className="text-gradient-chrome">EN IMAGES</span>
+            <span className="text-gradient-chrome">en images</span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-xl font-light leading-relaxed">
             Découvrez notre savoir-faire à travers nos réalisations et notre équipement professionnel.

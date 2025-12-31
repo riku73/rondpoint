@@ -111,7 +111,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   className="block"
                 >
-                  GARAGE
+                  Garage
                 </motion.span>
               </span>
               <span className="block overflow-hidden">
@@ -121,7 +121,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="block"
                 >
-                  UM ROND POINT
+                  um Rond Point
                 </motion.span>
               </span>
             </motion.h1>
@@ -134,15 +134,15 @@ export default function Hero() {
               className="flex items-center gap-3 whitespace-nowrap"
             >
               <span className="text-gradient-copper text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-wide">
-                ENTRETIEN
+                Entretien
               </span>
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary/60 flex-shrink-0" />
               <span className="text-gradient-copper text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-wide">
-                RÉPARATION
+                Réparation
               </span>
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary/60 flex-shrink-0" />
               <span className="text-gradient-copper text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-wide">
-                VENTE
+                Vente
               </span>
             </motion.div>
           </div>

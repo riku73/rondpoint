@@ -56,9 +56,9 @@ export default function Services() {
         >
           <span className="section-label mb-6">Nos Services</span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight">
-            UN SERVICE COMPLET
+            Un service complet
             <br />
-            <span className="text-gradient-chrome">POUR VOTRE VÉHICULE</span>
+            <span className="text-gradient-chrome">pour votre véhicule</span>
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl font-light leading-relaxed">
             De l&apos;entretien régulier à la vente, nous sommes là pour vous
@@ -102,7 +102,7 @@ export default function Services() {
               </motion.div>
 
               <h3 className="text-3xl md:text-4xl font-semibold mb-4 tracking-tight">
-                RÉPARATION & ENTRETIEN
+                Réparation & entretien
               </h3>
               <p className="text-zinc-400 mb-8 max-w-md font-light leading-relaxed">
                 Entretien régulier, réparations mécaniques, diagnostics
@@ -176,7 +176,7 @@ export default function Services() {
               </motion.div>
 
               <h3 className="text-3xl md:text-4xl font-semibold mb-4 tracking-tight">
-                VENTE DE VÉHICULES
+                Vente de véhicules
               </h3>
               <p className="text-zinc-400 mb-8 max-w-md font-light leading-relaxed">
                 Découvrez notre sélection de véhicules neufs et d&apos;occasion,
@@ -227,7 +227,7 @@ export default function Services() {
           <div className="relative z-10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <h3 className="text-2xl md:text-3xl font-semibold mb-3 tracking-tight">
-                BESOIN D&apos;UN DEVIS ?
+                Besoin d&apos;un devis ?
               </h3>
               <p className="text-zinc-400 max-w-md font-light">
                 Obtenez un devis gratuit et sans engagement en quelques minutes.

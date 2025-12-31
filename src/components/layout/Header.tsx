@@ -74,7 +74,7 @@ export default function Header() {
               </div>
               <div className="hidden sm:block">
                 <span className="font-semibold text-lg tracking-wide">
-                  GARAGE UM ROND POINT
+                  Garage um Rond Point
                 </span>
               </div>
             </Link>
@@ -162,7 +162,7 @@ export default function Header() {
                         />
                       </svg>
                     </div>
-                    <span className="font-semibold text-lg">GARAGE UM ROND POINT</span>
+                    <span className="font-semibold text-lg">Garage um Rond Point</span>
                   </div>
                   <button
                     onClick={() => setIsOpen(false)}

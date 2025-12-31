@@ -37,8 +37,8 @@ export default function Footer() {
                   <Car className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <span className="font-bold text-xl block">GARAGE</span>
-                  <span className="text-zinc-500 text-sm">UM ROND POINT</span>
+                  <span className="font-bold text-xl block">Garage</span>
+                  <span className="text-zinc-500 text-sm">um Rond Point</span>
                 </div>
               </Link>
               <p className="text-zinc-500 text-sm leading-relaxed max-w-xs">
@@ -134,7 +134,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               <div>
                 <h3 className="text-2xl font-bold mb-2">
-                  PRÊT À PRENDRE RENDEZ-VOUS ?
+                  Prêt à prendre rendez-vous ?
                 </h3>
                 <p className="text-zinc-500">
                   Contactez-nous pour un devis gratuit
