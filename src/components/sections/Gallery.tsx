@@ -4,9 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const categories = ["Tous", "Réparations", "Véhicules", "Notre Garage"];
 
 const galleryItems = [
   {
@@ -51,60 +48,41 @@ const galleryItems = [
     image:
       "https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=2128&auto=format&fit=crop",
   },
-  {
-    id: 7,
-    category: "Réparations",
-    title: "Entretien complet",
-    image:
-      "https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 8,
-    category: "Véhicules",
-    title: "Porsche 911",
-    image:
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop",
-  },
 ];
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState("Tous");
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  const filteredItems =
-    activeCategory === "Tous"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
 
   const selectedItem = galleryItems.find((item) => item.id === selectedImage);
 
   const handlePrevious = () => {
     if (selectedImage !== null) {
-      const currentIndex = filteredItems.findIndex(
+      const currentIndex = galleryItems.findIndex(
         (item) => item.id === selectedImage
       );
       const prevIndex =
-        currentIndex === 0 ? filteredItems.length - 1 : currentIndex - 1;
-      setSelectedImage(filteredItems[prevIndex].id);
+        currentIndex === 0 ? galleryItems.length - 1 : currentIndex - 1;
+      setSelectedImage(galleryItems[prevIndex].id);
     }
   };
 
   const handleNext = () => {
     if (selectedImage !== null) {
-      const currentIndex = filteredItems.findIndex(
+      const currentIndex = galleryItems.findIndex(
         (item) => item.id === selectedImage
       );
       const nextIndex =
-        currentIndex === filteredItems.length - 1 ? 0 : currentIndex + 1;
-      setSelectedImage(filteredItems[nextIndex].id);
+        currentIndex === galleryItems.length - 1 ? 0 : currentIndex + 1;
+      setSelectedImage(galleryItems[nextIndex].id);
     }
   };
 
   return (
     <section id="galerie" className="section-padding relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-[#0f0f0f]" />
+      <div className="absolute inset-0 bg-[#0a0a0a]" />
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
+      <div className="grid-pattern" />
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -113,103 +91,127 @@ export default function Gallery() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12"
+          className="mb-12"
         >
-          <div>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-12 bg-primary" />
-              <span className="text-primary text-sm font-medium tracking-widest uppercase">
-                Galerie
-              </span>
+          <span className="section-label mb-6">Galerie</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 leading-tight">
+            NOTRE TRAVAIL
+            <br />
+            <span className="text-gradient-chrome">EN IMAGES</span>
+          </h2>
+          <p className="text-lg text-zinc-400 max-w-xl font-light leading-relaxed">
+            Découvrez notre savoir-faire à travers nos réalisations et notre équipement professionnel.
+          </p>
+        </motion.div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[240px]">
+          {/* Large item - spans 2 cols and 2 rows */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            onClick={() => setSelectedImage(galleryItems[0].id)}
+            className="col-span-2 row-span-2 group cursor-pointer relative overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={galleryItems[0].image}
+              alt={galleryItems[0].title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end">
+              <span className="text-xs text-primary uppercase tracking-widest mb-2">{galleryItems[0].category}</span>
+              <h3 className="text-xl md:text-2xl font-semibold text-white">{galleryItems[0].title}</h3>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold">
-              NOTRE TRAVAIL
-              <br />
-              <span className="text-zinc-500">EN IMAGES</span>
-            </h2>
-          </div>
+            <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+              <ZoomIn className="w-5 h-5 text-white" />
+            </div>
+          </motion.div>
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveCategory(category)}
-                className={
-                  activeCategory === category
-                    ? "bg-primary hover:bg-primary/90 text-primary-foreground"
-                    : "border-zinc-700 hover:border-primary hover:bg-primary/10 text-zinc-300"
-                }
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-        </motion.div>
+          {/* Regular items */}
+          {galleryItems.slice(1, 3).map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+              onClick={() => setSelectedImage(item.id)}
+              className="col-span-1 row-span-1 group cursor-pointer relative overflow-hidden rounded-2xl"
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+              <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                <span className="text-[10px] text-primary uppercase tracking-widest mb-1">{item.category}</span>
+                <h3 className="text-sm md:text-base font-semibold text-white">{item.title}</h3>
+              </div>
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+                <ZoomIn className="w-4 h-4 text-white" />
+              </div>
+            </motion.div>
+          ))}
 
-        {/* Gallery Grid */}
-        <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                onClick={() => setSelectedImage(item.id)}
-                className={`group cursor-pointer relative overflow-hidden rounded-xl ${
-                  index === 0 || index === 5
-                    ? "md:col-span-2 md:row-span-2"
-                    : ""
-                }`}
-              >
-                <div
-                  className={`relative ${
-                    index === 0 || index === 5
-                      ? "aspect-square"
-                      : "aspect-[4/3]"
-                  }`}
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+          {/* Wide item - spans 2 cols */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            onClick={() => setSelectedImage(galleryItems[3].id)}
+            className="col-span-2 row-span-1 group cursor-pointer relative overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={galleryItems[3].image}
+              alt={galleryItems[3].title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute inset-0 p-5 flex flex-col justify-end">
+              <span className="text-xs text-primary uppercase tracking-widest mb-1">{galleryItems[3].category}</span>
+              <h3 className="text-lg md:text-xl font-semibold text-white">{galleryItems[3].title}</h3>
+            </div>
+            <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+              <ZoomIn className="w-4 h-4 text-white" />
+            </div>
+          </motion.div>
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
-
-                  {/* Content */}
-                  <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                    <motion.div
-                      initial={{ y: 20, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                      className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                    >
-                      <p className="text-white font-bold text-lg">{item.title}</p>
-                      <p className="text-zinc-400 text-sm">{item.category}</p>
-                    </motion.div>
-                  </div>
-
-                  {/* Zoom icon */}
-                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-primary/30">
-                    <ZoomIn className="w-5 h-5 text-white" />
-                  </div>
-
-                  {/* Corner accent */}
-                  <div className="absolute bottom-0 left-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-2 left-2 w-full h-full border-b-2 border-l-2 border-primary" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+          {/* Last two items */}
+          {galleryItems.slice(4, 6).map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 + 0.1 * index }}
+              onClick={() => setSelectedImage(item.id)}
+              className="col-span-1 row-span-1 group cursor-pointer relative overflow-hidden rounded-2xl"
+            >
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300" />
+              <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                <span className="text-[10px] text-primary uppercase tracking-widest mb-1">{item.category}</span>
+                <h3 className="text-sm md:text-base font-semibold text-white">{item.title}</h3>
+              </div>
+              <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+                <ZoomIn className="w-4 h-4 text-white" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       {/* Lightbox */}

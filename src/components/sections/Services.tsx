@@ -67,14 +67,14 @@ export default function Services() {
         </motion.div>
 
         {/* Service Cards Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* Repair & Maintenance Card */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative overflow-hidden rounded-2xl"
+            className="group relative overflow-hidden rounded-2xl h-full"
           >
             {/* Background Image */}
             <div className="absolute inset-0">
@@ -89,7 +89,7 @@ export default function Services() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 p-8 md:p-10 min-h-[520px] flex flex-col justify-end">
+            <div className="relative z-10 p-8 md:p-10 min-h-[560px] flex flex-col justify-end h-full">
               {/* Icon Badge */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -148,7 +148,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative overflow-hidden rounded-2xl"
+            className="group relative overflow-hidden rounded-2xl h-full"
           >
             {/* Background Image */}
             <div className="absolute inset-0">
@@ -163,7 +163,7 @@ export default function Services() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 p-8 md:p-10 min-h-[520px] flex flex-col justify-end">
+            <div className="relative z-10 p-8 md:p-10 min-h-[560px] flex flex-col justify-end h-full">
               {/* Icon Badge */}
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}

@@ -131,17 +131,17 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="flex items-center gap-3 flex-wrap"
+              className="flex items-center gap-3 whitespace-nowrap"
             >
-              <span className="text-gradient-copper text-2xl sm:text-3xl md:text-4xl font-medium tracking-wide">
+              <span className="text-gradient-copper text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-wide">
                 ENTRETIEN
               </span>
-              <span className="w-2 h-2 rounded-full bg-primary/60" />
-              <span className="text-gradient-copper text-2xl sm:text-3xl md:text-4xl font-medium tracking-wide">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary/60 flex-shrink-0" />
+              <span className="text-gradient-copper text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-wide">
                 RÉPARATION
               </span>
-              <span className="w-2 h-2 rounded-full bg-primary/60" />
-              <span className="text-gradient-copper text-2xl sm:text-3xl md:text-4xl font-medium tracking-wide">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-primary/60 flex-shrink-0" />
+              <span className="text-gradient-copper text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-wide">
                 VENTE
               </span>
             </motion.div>
