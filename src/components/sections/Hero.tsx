@@ -113,9 +113,9 @@ export default function Hero() {
               className="border-zinc-700 hover:border-primary hover:bg-primary/10 text-lg px-8 h-14 group"
               asChild
             >
-              <a href="tel:+352XXXXXXXX">
+              <a href="tel:+352810541">
                 <Phone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                +352 XX XX XX XX
+                +352 81 05 41
               </a>
             </Button>
           </motion.div>

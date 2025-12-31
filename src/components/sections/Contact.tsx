@@ -13,8 +13,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Téléphone",
-    value: "+352 XX XX XX XX",
-    href: "tel:+352XXXXXXXX",
+    value: "+352 81 05 41",
+    href: "tel:+352810541",
   },
   {
     icon: Mail,
@@ -25,14 +25,14 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Adresse",
-    value: "[Votre adresse], Luxembourg",
-    href: "#",
+    value: "1 Rue du Viaduc, L-9147 Erpeldange-sur-Sûre",
+    href: "https://maps.google.com/?q=1+Rue+du+Viaduc,+L-9147+Erpeldange-sur-Sûre,+Luxembourg",
   },
 ];
 
 const hours = [
-  { day: "Lundi - Vendredi", time: "08:00 - 18:00" },
-  { day: "Samedi", time: "09:00 - 13:00" },
+  { day: "Lundi - Vendredi", time: "07:30 - 12:00, 13:00 - 18:00" },
+  { day: "Samedi", time: "08:00 - 12:00" },
   { day: "Dimanche", time: "Fermé" },
 ];
 

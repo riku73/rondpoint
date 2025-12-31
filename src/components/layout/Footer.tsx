@@ -98,11 +98,11 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="tel:+352XXXXXXXX"
+                    href="tel:+352810541"
                     className="flex items-center gap-3 text-zinc-500 hover:text-white transition-colors group"
                   >
                     <Phone className="w-4 h-4 text-primary group-hover:rotate-12 transition-transform" />
-                    <span>+352 XX XX XX XX</span>
+                    <span>+352 81 05 41</span>
                   </a>
                 </li>
                 <li>
@@ -116,13 +116,13 @@ export default function Footer() {
                 </li>
                 <li className="flex items-start gap-3 text-zinc-500">
                   <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
-                  <span>[Votre adresse], Luxembourg</span>
+                  <span>1 Rue du Viaduc, L-9147 Erpeldange-sur-Sûre</span>
                 </li>
                 <li className="flex items-start gap-3 text-zinc-500">
                   <Clock className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                   <div className="text-sm">
-                    <p>Lun - Ven: 08:00 - 18:00</p>
-                    <p>Sam: 09:00 - 13:00</p>
+                    <p>Lun - Ven: 07:30 - 12:00, 13:00 - 18:00</p>
+                    <p>Sam: 08:00 - 12:00</p>
                   </div>
                 </li>
               </ul>

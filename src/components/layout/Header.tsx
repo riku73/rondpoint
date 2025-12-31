@@ -68,11 +68,11 @@ export default function Header() {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-6">
             <a
-              href="tel:+352XXXXXXXX"
+              href="tel:+352810541"
               className="flex items-center gap-2 text-sm font-medium text-zinc-400 hover:text-white transition-colors group"
             >
               <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-              <span className="hidden lg:inline">+352 XX XX XX XX</span>
+              <span className="hidden lg:inline">+352 81 05 41</span>
             </a>
             <Button className="btn-glow bg-primary hover:bg-primary/90 text-primary-foreground px-6">
               Prendre Rendez-vous
@@ -114,11 +114,11 @@ export default function Header() {
 
                 <div className="flex flex-col gap-4 mt-4 pt-4 border-t border-zinc-800">
                   <a
-                    href="tel:+352XXXXXXXX"
+                    href="tel:+352810541"
                     className="flex items-center gap-3 text-zinc-400 hover:text-white transition-colors py-2"
                   >
                     <Phone className="w-5 h-5 text-primary" />
-                    <span>+352 XX XX XX XX</span>
+                    <span>+352 81 05 41</span>
                   </a>
                   <Button className="w-full btn-glow bg-primary hover:bg-primary/90 text-primary-foreground h-12">
                     Prendre Rendez-vous
